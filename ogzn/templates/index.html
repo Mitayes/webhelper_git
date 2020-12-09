@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}
+59 Добросовестный землепользователь
+{% endblock %}
+
+{% block content %}
+<br>
+<h4 align="center">Вас приветствует сервис "Добросовестный землепользователь"</h4>
+<h5 align="center">При работе Вам будет задан ряд вопросов с целью выяснения наличия у Вас нарушений</h5>
+<h5 align="center">Для запуска помощника нажмите на кнопку "Старт"</h5>
+<p align="center">
+    <a class="btn btn btn-success" href="{% url 'start' %}">Старт</a>
+</p>
+{% endblock %}

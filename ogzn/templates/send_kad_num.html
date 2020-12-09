@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Обратная связь
+{% endblock %}
+
+{% block content %}
+    <br>
+    <h4>По результатам проведённого самостоятельного обследования признаков нарушения требований земельного законодательства не выявлено</h4>
+    <h4>Пожалуйста, введите Ваш кадастровый номер и нажмите кнопку "Отправить"</h4>
+    <form method="post">
+        {% csrf_token %}
+<!--        {{ form.feedback_email }}<br>-->
+        {{ form.feedback_kad_num }}<br>
+        <button type="submit" class="btn btn-success" onClick="{% url 'congratulations' %}">Отправить</button>
+        <span>{{ error }}</span>
+    </form>
+{% endblock %}

@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block title %}
+59 Добросовестный землепользователь
+{% endblock %}
+
+{% block content %}
+<br>
+<b>Форма поиска вхождения</b>
+<form method="GET">
+    <input name="search" type="text" class="form-control" value="{{ search }}"><br>
+    <input type="submit" value="Поиск">
+    <br><br>
+    <hr>
+</form>
+
+{% verbatim %}
+    <button class="btn btn-success" id="my_button">AJAX</button>
+    <div id="test">
+        {{ message }}
+    </div>
+{% endverbatim %}
+
+{% if search != '' %}
+<div class="container">
+    <h5>
+        <b>Результат:</b><br><br>
+        {% for x in questions %}
+            {{ x }}<br>
+        {% endfor %}
+    </h5>
+</div>
+{% endif %}
+
+<script src="/static/walker_axios.js"></script>
+
+<!--<script>-->
+<!--    var updateList = function(query){-->
+<!--        $.get('json_Search').done(function(data){-->
+<!--            console.log(data)-->
+<!--            $('#test').html(``)-->
+<!--            for(let item of data){-->
+<!--                $('#test').append(`-->
+<!--                    <div class="container">-->
+<!--                        <h6>-->
+<!--                            ${this.quest_text}<br>-->
+<!--                        </h6>-->
+<!--                    </div>-->
+<!--                    `)-->
+<!--            }-->
+<!--        })-->
+<!--    }-->
+<!--    $('#my_button').click(updateList)-->
+<!--</script>-->
+{% endblock %}

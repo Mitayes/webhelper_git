@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block title %}
+59 Добросовестный землепользователь
+{% endblock %}
+
+{% block content %}
+    <br>
+	<div class="container">
+		<div class="alert alert-primary" role="alert">
+			<div data-spy="scroll" >
+		  		{{ question }}<br>
+<!--				{{ test }} {{ nextq_id_yes }}-->
+			</div>
+		</div>
+	</div>
+<p class="text-center">
+	{% if next_count == 1 %}
+			<form method="get" class="text-center">
+				<button type="submit" class="btn btn-success"name="nextq" value="{{nextq_id_next}}">Далее</button><br>
+			</form>
+	{% elif next_count == 2 %}
+			<form method="get" class="text-center" >
+<!--				<button type="submit" class="btn btn-success" href="{% url 'send_kad_num' %}">Да</button>-->
+				<button type="submit" class="btn btn-success" name="nextq" value="{{nextq_id_yes}}">Да</button>
+				<button type="submit" class="btn btn-danger" name="nextq" value="{{nextq_id_no}}">Нет</button><br>
+			</form>
+	{% elif next_count == 0 %}
+			<div class="text-center">
+				<h3>Тестирование завершено</h3>
+				<a class="btn btn btn-success" href="{% url 'home' %}">Вернуться на гравную</a>
+			</div>
+	{% endif %}
+</p>
+
+{% if comment %}
+<div class="alert alert-info" role="alert">
+	{{ comment }}
+</div>
+
+<script>
+var vue_field = new Vue({
+  el: '#btn_yess',
+  data: {
+    message: 'Привет, Vue!',
+    one: false,
+    two: true,
+  },
+    methods: {
+        swapButtons: function () {
+          this.one = !this.one
+          this.two = !this.one
+        }
+    }
+})
+</script>
+{% endif %}
+{% endblock %}
