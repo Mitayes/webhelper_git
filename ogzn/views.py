@@ -15,14 +15,19 @@ def congratulations(request):
 
 def start(request):
     dictt = {}
+    # Получаем информацию о том, на каком вопросе (вершине) находится пользователь через GET запрос с templates
     nextq = request.GET.get('nextq', 'start')
+    # Пользовательская переменная path нужна для сохранения маршрута, который прошёл посетитель
     if request.session['path'] == '':
         request.session['path'] += nextq
     else:
         request.session['path'] += ',' + nextq
+    # Получаем информацию о том, куда можно перейти по графу из текущей вершины (следующие вопросы)
     near_nodes = list(GraphSelector.G.adj[nextq])
     for value in near_nodes:
         dictt['yes' in GraphSelector.G[nextq][value]] = value
+    # Определяем сколько вариантов перемещения дальше имеется
+    # Необходимо для вариативной отрисовки кнопок в templates
     next_count = len(list(GraphSelector.G.adj[nextq]))
     next_yes = ''
     next_no = ''
@@ -33,11 +38,15 @@ def start(request):
     if next_count == 0:
         pass
     elif next_count == 1:
+        # По умолчанию если предполагается 1 вариант ответа на ребро ставится метка yes
         next_next = Questions.objects.get(quest_id=dictt.get(True))
         nextq_id_next = dictt.get(True)
     elif next_count == 2:
+        # Получаем из графа текст для ответа ДА
         next_yes = Questions.objects.get(quest_id=dictt.get(True))
+        # Получаем из графа текст для ответа НЕТ
         next_no = Questions.objects.get(quest_id=dictt.get(False))
+        # Получаем идентификаторы для ДА и НЕТ для кнопок в форме
         nextq_id_yes = dictt.get(True)
         nextq_id_no = dictt.get(False)
     context = {

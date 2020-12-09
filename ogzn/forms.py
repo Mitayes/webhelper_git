@@ -12,6 +12,7 @@ class FeedbackForm(ModelForm):
                 'class': 'form-control',
                 'placeholder': 'Введите e-mail'
             }),
+            # 2цифры: 2цифры: 7цифр: сколькоТоЦифр
             'feedback_kad_num': TextInput(attrs={
                 'class': 'form-control',
                 'placeholder': 'Введите Кадастровый номер'

@@ -62,15 +62,16 @@ class GraphSelector:
     start_pos = 'start'
     nodes = []
     paths = []
-    dict = {}
     task = Questions.objects.filter(quest_id=start_pos)
     # Собираем вершины графа
     for node in Questions.objects.all().values_list('quest_id', flat=True):
         nodes.append(node)
+    # Загружаем вершины в граф
     G.add_nodes_from(list(set(nodes)))
     # Собираем рёбра графа
     for path in Graph.objects.all().values_list('graph_path_id', flat=True):
         paths.append(path)
+        # Загружаем рёбра в граф
         G.add_edge(path.split(',')[0], path.split(',')[1], key=Graph.graph_q_id)
     for node in list(Graph.objects.all()):
         # Вытаскиваем из базы маркер ребра
