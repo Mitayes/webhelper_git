@@ -30,18 +30,6 @@ class Feedback(models.Model):
         verbose_name_plural = 'Обратная связь'
 
 
-# class Result(models.Model):
-#     result_id = models.CharField('Идентификатор ответа', max_length=10)
-#     result_text = models.TextField('Рекомендация')
-#
-#     def __str__(self):
-#         return self.result_text
-#
-#     class Meta:
-#         verbose_name = 'Рекомендация'
-#         verbose_name_plural = 'Рекомендации'
-
-
 class Graph(models.Model):
     graph_path_id = models.CharField('Идентификаторы ответов (откуда куда) пр: q1,q2', max_length=20)
     graph_q_id = models.CharField('Ответ yes или no', max_length=3)
@@ -55,6 +43,17 @@ class Graph(models.Model):
     class Meta:
         verbose_name = 'Граф соответствий'
         verbose_name_plural = 'Граф соответствий'
+
+# class Result(models.Model):
+#     result_id = models.CharField('Идентификатор ответа', max_length=10)
+#     result_text = models.TextField('Рекомендация')
+#
+#     def __str__(self):
+#         return self.result_text
+#
+#     class Meta:
+#         verbose_name = 'Рекомендация'
+#         verbose_name_plural = 'Рекомендации'
 
 
 class GraphSelector:
