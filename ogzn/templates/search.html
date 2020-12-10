@@ -13,14 +13,6 @@
     <br><br>
     <hr>
 </form>
-
-{% verbatim %}
-    <button class="btn btn-success" id="my_button">AJAX</button>
-    <div id="test">
-        {{ message }}
-    </div>
-{% endverbatim %}
-
 {% if search != '' %}
 <div class="container">
     <h5>
@@ -31,6 +23,14 @@
     </h5>
 </div>
 {% endif %}
+
+{% verbatim %}
+<!--    <button class="btn btn-success" id="my_button">AJAX</button>-->
+    <div id="test">
+        {{ message }}
+    </div>
+{% endverbatim %}
+
 
 <script src="/static/walker_axios.js"></script>
 
